@@ -49,6 +49,9 @@ app.use('/quickstart', express.static(quickstartPath));
 const examplesPath = path.join(__dirname, '../examples');
 app.use('/examples', express.static(examplesPath));
 
+const questroom = path.join(__dirname, '../quest/public');
+app.use('/quest', express.static(questroom));
+
 /**
  * Default to the Quick Start application.
  */
@@ -79,7 +82,6 @@ app.get('/token', function(request, response) {
   // Grant the access token Twilio Video capabilities.
   const grant = new VideoGrant();
   token.addGrant(grant);
-
   // Serialize the token to a JWT string.
   response.send(token.toJwt());
 });
